@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#f2f4f8"
+        app:cardElevation="10dp"
+        android:layout_margin="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+
+            <RelativeLayout
+                android:id="@+id/relativeYatra"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@drawable/txt_border">
+
+                <TextView
+                    android:id="@+id/txtYatraNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="10dp"
+                    android:text="1"
+                    android:textStyle="bold"
+                    android:textColor="#222222"
+                    android:textSize="30dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtYatraNumber"
+                    android:layout_centerHorizontal="true"
+                    android:text="Yatra"
+                    android:textStyle="bold"
+                    android:textColor="#222222"
+                    android:textSize="20dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeSpot"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/relativeYatra"
+                android:background="@drawable/txt_border">
+
+                <TextView
+                    android:id="@+id/txtSNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="5dp"
+                    android:text="1"
+                    android:textStyle="bold"
+                    android:textColor="#222222"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtSNumber"
+                    android:layout_centerHorizontal="true"
+                    android:text="Spot"
+                    android:textStyle="bold"
+                    android:textColor="#222222"
+                    android:textSize="15sp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/txtDateTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="25/12/2017 12:00"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#222222"
+                android:gravity="center"
+                android:layout_toRightOf="@+id/relativeSpot"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="20dp"/>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

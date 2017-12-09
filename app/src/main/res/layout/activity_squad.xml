@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#f2f4f8"
+    tools:context="com.ssp.Activity.SpotActivity">
+
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/app_toolbar"></include>
+
+    <RelativeLayout
+        android:id="@+id/relativeTop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar">
+
+        <TextView
+            android:id="@+id/txtSpotNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Spot Number:"
+            android:textColor="#000"
+            android:layout_marginLeft="10dp" />
+
+        <Spinner
+            android:id="@+id/spinnerSpot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_below="@+id/txtSpotNumber">
+        </Spinner>
+
+            <EditText
+                android:id="@+id/edtYatriNumber"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/spinnerSpot"
+                android:layout_margin="10dp"
+                android:padding="5dp"
+                android:background="@drawable/edt_border"
+                android:hint="Enter Yatri Number"
+                android:singleLine="true" />
+
+        <TextView
+            android:id="@+id/txtYatraNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Yatra Number:"
+            android:textColor="#000"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@+id/edtYatriNumber"/>
+
+
+        <Spinner
+            android:id="@+id/spinnerYatra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_below="@id/txtYatraNumber">
+        </Spinner>
+
+        <Button
+            android:id="@+id/btnYatri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spinnerYatra"
+            android:background="@color/colorPrimary"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="20dp"
+            android:text="OK"
+            android:textStyle="bold"
+            android:textColor="#FFF"/>
+
+
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        app:cardElevation="20dp"
+        android:layout_below="@+id/relativeTop">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp">
+
+            <TextView
+                android:id="@+id/txtYatriNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Yatri Number:111"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/txtYatriName"
+                android:layout_below="@+id/txtYatriNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name:Kush Shah"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/txtYatriMobileNo"
+                android:layout_below="@+id/txtYatriName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mobile No:9998038839"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/txtYatriEmailId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtYatriMobileNo"
+                android:text="EmailId:kushshah1234.ks@gmail.com"
+                android:textSize="20sp"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <Button
+        android:id="@+id/btnYatriDone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:background="@color/colorPrimary"
+        android:layout_alignParentBottom="true"
+        android:text="Yatri Confirm"
+        android:textColor="#FFF"
+        android:textSize="20sp"/>
+
+
+
+</RelativeLayout>
