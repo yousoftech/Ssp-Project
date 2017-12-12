@@ -101,7 +101,7 @@ public class ChangePassdwordFragment extends Fragment {
         Log.d("ChangePassword", "" + object.toString());
 
         JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.POST,
-                Constant.PATH + "user/updatepassword/", object, new Response.Listener<JSONObject>() {
+                Constant.PATH + "userMaster/updatepassword", object, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 try {
