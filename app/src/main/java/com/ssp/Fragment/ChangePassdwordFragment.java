@@ -118,6 +118,8 @@ public class ChangePassdwordFragment extends Fragment {
                         startActivity(new Intent(getContext(), LoginActivity.class));
                         getActivity().finish();
 
+                    } else {
+                        Toast.makeText(getContext(), "Something Missing", Toast.LENGTH_SHORT).show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

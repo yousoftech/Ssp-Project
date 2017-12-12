@@ -48,7 +48,7 @@ public class SpotActivity extends AppCompatActivity {
     String yatraNumber;
     String spotNumber;
 
-    String[] spot = {"1", "2", "3",};
+    String[] spot = {"1", "5", "10",};
 
     String[] yatra = {"1", "2", "3", "4", "5", "6", "7",};
 
