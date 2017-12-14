@@ -12,10 +12,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +53,7 @@ public class SpotActivity extends AppCompatActivity {
     String spotNumber;
     RadioGroup radioGroup;
     RadioButton radioButton;
+    Switch sw;
 
     String[] spot = {"1", "5", "10",};
     String sp;
@@ -75,9 +78,25 @@ public class SpotActivity extends AppCompatActivity {
         spinnerSpot = (Spinner) findViewById(R.id.spinnerSpot);
         spinnerYatra = (Spinner) findViewById(R.id.spinnerYatra);
         btnLogout = (Button) findViewById(R.id.btnLogout);
-        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+       // radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+         sw  =(Switch)findViewById(R.id.SwitchOnorOff);
 
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                {
+                    sp = sw.getTextOn().toString();
+
+                }
+                else
+                {
+                    sp = sw.getTextOff().toString();
+                }
+            }
+        });
+
+     /*   radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
                 RadioButton rb = (RadioButton) radioGroup.findViewById(checkedId);
@@ -86,7 +105,7 @@ public class SpotActivity extends AppCompatActivity {
                     sp = String.valueOf(rb.getText());
                 }
             }
-        });
+        });*/
 
 
         btnYatri.setOnClickListener(new View.OnClickListener() {

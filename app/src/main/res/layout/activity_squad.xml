@@ -29,9 +29,14 @@
         <Spinner
             android:id="@+id/spinnerSpot"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_below="@+id/txtSpotNumber"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:spinnerMode="dropdown"
+            android:gravity="center"
+
+            android:background="#ffffff" >
+
         </Spinner>
 
             <EditText
@@ -58,30 +63,64 @@
 
         <Spinner
             android:id="@+id/spinnerYatra"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="280dp"
+            android:layout_height="35dp"
+
             android:layout_below="@id/txtYatraNumber"
+            android:spinnerMode="dropdown"
+            android:gravity="center"
+            android:background="#ffffff"
             android:layout_margin="10dp">
         </Spinner>
+        <TextView
+            android:id="@+id/txtSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edtYatriNumber"
+            android:layout_toRightOf="@+id/txtYatraNumber"
+            android:layout_marginLeft="180dp"
+            android:text="Up / Down"
+            android:textColor="#000" />
+
+        <Switch
+            android:id="@+id/SwitchOnorOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtYatraNumber"
+            android:layout_toEndOf="@+id/spinnerYatra"
+            android:layout_toRightOf="@+id/spinnerYatra"
+            android:button="@null"
+            android:padding="20dp"
+            android:paddingTop="500dp"
+            android:textOff="Down"
+            android:textOn="Up"
+            android:textColorHighlight="@color/colorPrimaryDark"
+            android:textColorHint="@color/colorPrimaryDark"
+            />
 
         <Button
             android:id="@+id/btnYatri"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_below="@id/spinnerYatra"
-            android:layout_marginRight="20dp"
+           android:layout_marginTop="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+
             android:background="@color/colorPrimary"
             android:text="OK"
             android:textColor="#FFF"
             android:textStyle="bold" />
 
-        <RadioGroup
+     <!--   <RadioGroup
             android:id="@+id/radioGroup"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/spinnerYatra">
+            android:layout_below="@id/spinnerYatra"
+            >
+
 
             <RadioButton
                 android:id="@+id/rdbUp"
@@ -99,7 +138,7 @@
 
                 android:text="Down" />
 
-        </RadioGroup>
+        </RadioGroup>-->
 
     </RelativeLayout>
 
@@ -160,10 +199,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
-        android:text="Yatri Confirm"
+        android:text="Confirm Yatri"
+        android:layout_marginBottom="15dp"
         android:textColor="#FFF"
         android:textSize="20sp"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        />
 
 
 
