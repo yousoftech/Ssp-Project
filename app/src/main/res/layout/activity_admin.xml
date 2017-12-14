@@ -6,8 +6,199 @@
     android:layout_height="match_parent"
     tools:context="com.ssp.Activity.AdminActivity">
 
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/app_toolbar"></include>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/app_toolbar"></include>
+
+            <EditText
+                android:id="@+id/edtAdminYatriNumber"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/toolbar"
+                android:layout_margin="10dp"
+                android:background="@drawable/edt_border"
+                android:hint="Enter Yatri Number"
+                android:inputType="number"
+                android:padding="5dp"
+                android:singleLine="true" />
+
+            <Button
+                android:id="@+id/btnAdminSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edtAdminYatriNumber"
+                android:layout_margin="5dp"
+                android:background="@color/colorPrimary"
+                android:text="Submit"
+                android:textColor="#FFF"
+                android:textSize="20dp" />
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardAdminBottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardView"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                app:cardElevation="20dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="20dp">
+
+                    <TextView
+                        android:id="@+id/txtAdminYatriNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yatri Number:111"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/txtAdminYatriName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtAdminYatriNumber"
+                        android:text="Name:Kush Shah"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/txtAdminYatriMobileNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtAdminYatriName"
+                        android:text="Mobile No:9998038839"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/txtAdminYatriEmailId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtAdminYatriMobileNo"
+                        android:text="EmailId:kushshah1234.ks@gmail.com"
+                        android:textSize="20sp" />
+
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/btnAdminSubmit"
+                android:layout_margin="10dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="#f2f4f8"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <RelativeLayout
+                        android:id="@+id/relativeYatra"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/txt_border">
+
+                        <TextView
+                            android:id="@+id/txtAdminYatraNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_margin="10dp"
+                            android:text="1"
+                            android:textColor="#222222"
+                            android:textSize="30dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txtAdminYatraNumber"
+                            android:layout_centerHorizontal="true"
+                            android:text="Yatra"
+                            android:textColor="#222222"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/relativeSpot"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/relativeYatra"
+                        android:background="@drawable/txt_border">
+
+                        <TextView
+                            android:id="@+id/txtAdminSNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_margin="5dp"
+                            android:text="1"
+                            android:textColor="#222222"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txtAdminSNumber"
+                            android:layout_centerHorizontal="true"
+                            android:text="Spot"
+                            android:textColor="#222222"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/txtAdminDateTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@+id/relativeSpot"
+                        android:gravity="center"
+                        android:text="25/12/2017 12:00"
+                        android:textColor="#222222"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtAdminUpDown"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtAdminDateTime"
+                        android:layout_margin="20dp"
+                        android:layout_toRightOf="@+id/relativeSpot"
+                        android:gravity="center"
+                        android:text="UP"
+                        android:textColor="#222222"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+        </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>
+
+

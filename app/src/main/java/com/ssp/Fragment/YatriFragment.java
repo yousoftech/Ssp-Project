@@ -79,8 +79,10 @@ public class YatriFragment extends Fragment {
                             JSONObject obj = array.getJSONObject(n);
                             yatra=new beanYatra();
                             int yatraNo=obj.getInt("iYatraNo");
-                            int spotNo=obj.getInt("iSpotId");
+                            int spotNo = obj.getInt("iSpotNo");
                             String dateTime=obj.getString("datetimeYatraTime");
+                            String upDown = obj.getString("strUpOrDown");
+                            yatra.setYatraUpDown(upDown);
                             yatra.setYatraNo(yatraNo);
                             yatra.setSpotNo(spotNo);
                             yatra.setYatraTime(dateTime);

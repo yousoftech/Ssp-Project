@@ -77,9 +77,32 @@
             android:textColor="#FFF"
             android:textStyle="bold" />
 
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spinnerYatra">
 
+            <RadioButton
+                android:id="@+id/rdbUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorPrimary"
+                android:checked="false"
+                android:text="UP" />
+
+            <RadioButton
+                android:id="@+id/rdbDown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+
+                android:text="Down" />
+
+        </RadioGroup>
 
     </RelativeLayout>
+
 
     <android.support.v7.widget.CardView
         android:id="@+id/cardBottom"

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         app:cardBackgroundColor="#f2f4f8"
-        app:cardElevation="10dp"
-        android:layout_margin="10dp">
+        app:cardElevation="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -29,9 +29,9 @@
                     android:layout_centerHorizontal="true"
                     android:layout_margin="10dp"
                     android:text="1"
-                    android:textStyle="bold"
                     android:textColor="#222222"
-                    android:textSize="30dp" />
+                    android:textSize="30dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -39,9 +39,9 @@
                     android:layout_below="@+id/txtYatraNumber"
                     android:layout_centerHorizontal="true"
                     android:text="Yatra"
-                    android:textStyle="bold"
                     android:textColor="#222222"
-                    android:textSize="20dp" />
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 
@@ -61,9 +61,9 @@
                     android:layout_centerHorizontal="true"
                     android:layout_margin="5dp"
                     android:text="1"
-                    android:textStyle="bold"
                     android:textColor="#222222"
-                    android:textSize="20dp" />
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -71,9 +71,9 @@
                     android:layout_below="@+id/txtSNumber"
                     android:layout_centerHorizontal="true"
                     android:text="Spot"
-                    android:textStyle="bold"
                     android:textColor="#222222"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
 
@@ -81,14 +81,26 @@
                 android:id="@+id/txtDateTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="25/12/2017 12:00"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:textColor="#222222"
-                android:gravity="center"
+                android:layout_marginLeft="20dp"
                 android:layout_toRightOf="@+id/relativeSpot"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="20dp"/>
+                android:gravity="center"
+                android:text="25/12/2017 12:00"
+                android:textColor="#222222"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtUpDown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtDateTime"
+                android:layout_margin="20dp"
+                android:layout_toRightOf="@+id/relativeSpot"
+                android:gravity="center"
+                android:text="UP"
+                android:textColor="#222222"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>

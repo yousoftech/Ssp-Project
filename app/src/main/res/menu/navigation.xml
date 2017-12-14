@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/YatraSummary"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Yatra Summary" />
+
+    <item
+        android:id="@+id/yatriStatus"
+        android:icon="@drawable/ic_yatri"
+        android:title="Yatri Status" />
+
+</menu>

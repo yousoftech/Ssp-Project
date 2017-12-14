@@ -8,6 +8,15 @@ public class beanYatra {
 
     int yatraNo,spotNo;
     String yatraTime;
+    String yatraUpDown;
+
+    public String getYatraUpDown() {
+        return yatraUpDown;
+    }
+
+    public void setYatraUpDown(String yatraUpDown) {
+        this.yatraUpDown = yatraUpDown;
+    }
 
     public int getYatraNo() {
         return yatraNo;

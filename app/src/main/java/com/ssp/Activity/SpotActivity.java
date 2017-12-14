@@ -13,6 +13,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,9 +49,11 @@ public class SpotActivity extends AppCompatActivity {
     Toolbar toolbar;
     String yatraNumber;
     String spotNumber;
+    RadioGroup radioGroup;
+    RadioButton radioButton;
 
     String[] spot = {"1", "5", "10",};
-
+    String sp;
     String[] yatra = {"1", "2", "3", "4", "5", "6", "7",};
 
     @Override
@@ -71,6 +75,19 @@ public class SpotActivity extends AppCompatActivity {
         spinnerSpot = (Spinner) findViewById(R.id.spinnerSpot);
         spinnerYatra = (Spinner) findViewById(R.id.spinnerYatra);
         btnLogout = (Button) findViewById(R.id.btnLogout);
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+                RadioButton rb = (RadioButton) radioGroup.findViewById(checkedId);
+                if (null != rb && checkedId > -1) {
+
+                    sp = String.valueOf(rb.getText());
+                }
+            }
+        });
+
 
         btnYatri.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,6 +230,7 @@ public class SpotActivity extends AppCompatActivity {
                 object.put("iUserDetailsId", edtYatriNumber.getText().toString());
                 object.put("iSpotId", spotNumber);
                 object.put("iYatraNo", yatraNumber);
+                object.put("strUpOrDown", sp);
 
             } catch (JSONException e) {
                 Toast.makeText(SpotActivity.this, "Something take longer time please try again..!", Toast.LENGTH_LONG).show();

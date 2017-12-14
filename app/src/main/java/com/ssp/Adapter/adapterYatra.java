@@ -41,6 +41,7 @@ public class adapterYatra extends RecyclerView.Adapter<adapterYatra.RecyclerView
         holder.txtYatraNo.setText(""+event.get(position).getYatraNo());
         holder.txtSpotNo.setText(""+event.get(position).getSpotNo());
         holder.txtDatetime.setText(event.get(position).getYatraTime());
+        holder.txtUpDown.setText(event.get(position).getYatraUpDown());
     }
 
     @Override
@@ -50,7 +51,7 @@ public class adapterYatra extends RecyclerView.Adapter<adapterYatra.RecyclerView
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txtYatraNo,txtSpotNo, txtDatetime;
+        TextView txtYatraNo, txtSpotNo, txtDatetime, txtUpDown;
 
 
         public RecyclerViewHolder(View itemView) {
@@ -59,7 +60,7 @@ public class adapterYatra extends RecyclerView.Adapter<adapterYatra.RecyclerView
             txtYatraNo = (TextView) itemView.findViewById(R.id.txtYatraNumber);
             txtSpotNo = (TextView) itemView.findViewById(R.id.txtSNumber);
             txtDatetime = (TextView) itemView.findViewById(R.id.txtDateTime);
-
+            txtUpDown = (TextView) itemView.findViewById(R.id.txtUpDown);
         }
     }
 }
