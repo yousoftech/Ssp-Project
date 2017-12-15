@@ -1,13 +1,17 @@
 package com.ssp.Activity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -54,6 +58,7 @@ public class SpotActivity extends AppCompatActivity {
     RadioGroup radioGroup;
     RadioButton radioButton;
     Switch sw;
+    boolean doubleBackToExitPressedOnce = false;
 
     String[] spot = {"1", "5", "10",};
     String sp;
@@ -87,7 +92,6 @@ public class SpotActivity extends AppCompatActivity {
                 if(isChecked)
                 {
                     sp = sw.getTextOn().toString();
-
                 }
                 else
                 {
@@ -134,7 +138,6 @@ public class SpotActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 spotNumber = spinnerSpot.getSelectedItem().toString();
-
             }
 
             @Override
@@ -152,7 +155,6 @@ public class SpotActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 yatraNumber = spinnerYatra.getSelectedItem().toString();
-
             }
 
             @Override
@@ -370,12 +372,30 @@ public class SpotActivity extends AppCompatActivity {
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.remove("logged");
-                editor.clear();
-                editor.commit();
-                finish();
-                Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_SHORT).show();
+
+                final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(SpotActivity.this);
+                LayoutInflater inflater = SpotActivity.this.getLayoutInflater();
+                dialogBuilder.setMessage("Are Confirm for Logout...?");
+
+                dialogBuilder.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+
+                        SharedPreferences.Editor editor = preferences.edit();
+                        editor.remove("logged");
+                        editor.clear();
+                        editor.commit();
+                        finish();
+                        Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    }
+                });
+
+                AlertDialog a = dialogBuilder.create();
+                a.show();
             }
         });
         final ActionBar actionBar = getSupportActionBar();
@@ -385,4 +405,25 @@ public class SpotActivity extends AppCompatActivity {
             actionBar.setHomeButtonEnabled(false);
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
+    }
+
 }
