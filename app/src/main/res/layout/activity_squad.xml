@@ -31,11 +31,12 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_below="@+id/txtSpotNumber"
-            android:layout_margin="10dp"
-            android:spinnerMode="dropdown"
+            android:spinnerMode="dialog"
             android:gravity="center"
+            android:layout_margin="10dp"
+            android:padding="5dp"
+            android:background="@drawable/spinner_border">
 
-            android:background="#ffffff" >
 
         </Spinner>
 
@@ -45,10 +46,10 @@
                 android:layout_height="40dp"
                 android:layout_below="@+id/spinnerSpot"
                 android:layout_margin="10dp"
+                android:padding="5dp"
                 android:background="@drawable/edt_border"
                 android:hint="Enter Yatri Number"
                 android:inputType="number"
-                android:padding="5dp"
                 android:singleLine="true" />
 
         <TextView
@@ -65,12 +66,11 @@
             android:id="@+id/spinnerYatra"
             android:layout_width="280dp"
             android:layout_height="35dp"
-
             android:layout_below="@id/txtYatraNumber"
-            android:spinnerMode="dropdown"
+            android:spinnerMode="dialog"
             android:gravity="center"
-            android:background="#ffffff"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:background="@drawable/spinner_border">
         </Spinner>
         <TextView
             android:id="@+id/txtSwitch"
@@ -150,7 +150,7 @@
         android:layout_below="@+id/relativeTop"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="60dp"
         android:visibility="gone"
         app:cardElevation="20dp">
 
