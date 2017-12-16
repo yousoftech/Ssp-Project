@@ -29,11 +29,11 @@ import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
+    public static final String PREFS_NAME = "LoginPrefs";
     EditText edtUserName, edtPassword;
     ProgressDialog progressDialog;
     ConnectionDetector detector;
     SharedPreferences preferences;
-    public static final String PREFS_NAME = "LoginPrefs";
     Button btnLogin;
 
     @SuppressLint("WrongConstant")
@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         if (preferences.getString("logged", "").equals("logged")) {
             if (preferences.getString("userType", "").equalsIgnoreCase("Admin")) {
-                startActivity(new Intent(LoginActivity.this, AdminActivity.class));
+                startActivity(new Intent(LoginActivity.this, MainAdminActivity.class));
                 finish();
             } else if (preferences.getString("userType", "").equalsIgnoreCase("Spot Boys")) {
                 startActivity(new Intent(LoginActivity.this, SpotActivity.class));
@@ -118,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
                                     String emailId = obj.getString("strUserEmailId");
                                     String userType = obj.getString("strUserType");
                                     if (userType.equalsIgnoreCase("Admin")) {
-                                        startActivity(new Intent(LoginActivity.this, AdminActivity.class));
+                                        startActivity(new Intent(LoginActivity.this, MainAdminActivity.class));
                                         editor.putString("logged", "logged");
                                         editor.putString("userType", userType);
                                         editor.commit();
