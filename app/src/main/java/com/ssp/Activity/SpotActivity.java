@@ -32,6 +32,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.ssp.Model.spotYatra;
 import com.ssp.R;
 import com.ssp.Util.ConnectionDetector;
 import com.ssp.Util.Constant;
@@ -39,6 +40,8 @@ import com.ssp.Util.Constant;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import static com.ssp.Activity.LoginActivity.PREFS_NAME;
 
@@ -57,6 +60,10 @@ public class SpotActivity extends AppCompatActivity {
     String spotNumber;
     RadioGroup radioGroup;
     RadioButton radioButton;
+    spotYatra spotYatra;
+    ArrayList<spotYatra> arraySpot;
+    int SpotId;
+    ArrayList<String> spotArr;
     Switch sw;
     boolean doubleBackToExitPressedOnce = false;
 
@@ -83,18 +90,15 @@ public class SpotActivity extends AppCompatActivity {
         spinnerSpot = (Spinner) findViewById(R.id.spinnerSpot);
         spinnerYatra = (Spinner) findViewById(R.id.spinnerYatra);
         btnLogout = (Button) findViewById(R.id.btnLogout);
-       // radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
-         sw  =(Switch)findViewById(R.id.SwitchOnorOff);
+        // radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        sw = (Switch) findViewById(R.id.SwitchOnorOff);
 
         sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked)
-                {
+                if (isChecked) {
                     sp = sw.getTextOn().toString();
-                }
-                else
-                {
+                } else {
                     sp = sw.getTextOff().toString();
                 }
             }
@@ -130,14 +134,13 @@ public class SpotActivity extends AppCompatActivity {
         });
         setupToolbar("Spot Work");
 
-        ArrayAdapter sp = new ArrayAdapter(this, android.R.layout.simple_spinner_item, spot);
-        sp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //Setting the ArrayAdapter data on the Spinner
-        spinnerSpot.setAdapter(sp);
         spinnerSpot.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                spotNumber = spinnerSpot.getSelectedItem().toString();
+                //spotNumber = spinnerSpot.getSelectedItem().toString();
+                spotYatra spotYatra = arraySpot.get(i);
+                SpotId = spotYatra.getSpotId();
+
             }
 
             @Override
@@ -147,10 +150,6 @@ public class SpotActivity extends AppCompatActivity {
         });
 
 
-        ArrayAdapter aa = new ArrayAdapter(this, android.R.layout.simple_spinner_item, yatra);
-        aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //Setting the ArrayAdapter data on the Spinner
-        spinnerYatra.setAdapter(aa);
         spinnerYatra.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -249,7 +248,7 @@ public class SpotActivity extends AppCompatActivity {
             final JSONObject object = new JSONObject();
             try {
                 object.put("iUserDetailsId", edtYatriNumber.getText().toString());
-                object.put("iSpotId", spotNumber);
+                object.put("iSpotId", SpotId);
                 object.put("iYatraNo", yatraNumber);
                 object.put("strUpOrDown", sp);
 
@@ -329,14 +328,33 @@ public class SpotActivity extends AppCompatActivity {
                                 String msg = response.getString("message");
                                 // Toast.makeText(this, ""+code, Toast.LENGTH_SHORT).show();
                                 if (code == true) {
+                                    arraySpot = new ArrayList<>();
+                                    spotArr = new ArrayList<>();
+
                                     progressDialog.dismiss();
                                     JSONArray obj = response.getJSONArray("data");
                                     for (int i = 0; i < obj.length(); i++) {
                                         JSONObject jresponse = obj.getJSONObject(i);
                                         int spotId = jresponse.getInt("iSpotId");
-                                        String spotName = jresponse.getString("strSpotName");
-                                        Log.d("nickname", "" + spotId + " " + spotName);
+                                        int spotNo = jresponse.getInt("iSpotNo");
+                                        spotYatra = new spotYatra();
+                                        spotYatra.setSpotId(spotId);
+                                        spotYatra.setSpotNo(spotNo);
+                                        spotArr.add("Spot No: " + spotYatra.getSpotNo());
+                                        arraySpot.add(spotYatra);
+                                        Log.d("nickname", "" + spotId + " " + spotNo);
                                     }
+                                    ArrayAdapter sp = new ArrayAdapter(SpotActivity.this, android.R.layout.simple_spinner_item, spotArr);
+                                    sp.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                    //Setting the ArrayAdapter data on the Spinner
+                                    spinnerSpot.setAdapter(sp);
+
+
+                                    ArrayAdapter aa = new ArrayAdapter(SpotActivity.this, android.R.layout.simple_spinner_item, yatra);
+                                    aa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                                    //Setting the ArrayAdapter data on the Spinner
+                                    spinnerYatra.setAdapter(aa);
+
                                 } else {
                                     progressDialog.dismiss();
                                     Toast.makeText(SpotActivity.this, "Sorry", Toast.LENGTH_SHORT).show();
