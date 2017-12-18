@@ -17,7 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
+import android.support.v7.widget.Toolbar;
 
 import com.ssp.Fragment.YatraSummaryFragment;
 import com.ssp.Fragment.YatriStatusFragment;
@@ -40,7 +40,7 @@ public class MainAdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_admin);
         preferences = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         btnLogout = (Button) findViewById(R.id.btnLogout);
         mTextMessage = (TextView) findViewById(R.id.message);
         txt = (TextView) findViewById(R.id.txtTitle);
@@ -67,6 +67,7 @@ public class MainAdminActivity extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frameLayout, YatraSummaryFragment.newInstance());
         transaction.commit();
+        setupToolbar("Admin");
     }
 
     @Override
@@ -90,7 +91,7 @@ public class MainAdminActivity extends AppCompatActivity {
     }
 
     private void setupToolbar(String title) {
-        
+        setSupportActionBar(toolbar);
         txt.setText(title);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,7 +109,7 @@ public class MainAdminActivity extends AppCompatActivity {
                         editor.clear();
                         editor.commit();
                         finish();
-                        Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Bye Bye", Toast.LENGTH_SHORT).show();
                     }
                 });
                 dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
