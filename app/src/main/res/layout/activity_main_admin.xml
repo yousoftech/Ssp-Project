@@ -9,14 +9,15 @@
     tools:context="com.ssp.Activity.MainAdminActivity">
 
     <include
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbaradmin"
         layout="@layout/app_toolbar"></include>
 
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/navigation"></FrameLayout>
+        android:layout_above="@+id/navigation"
+        android:layout_below="@+id/toolbaradmin"></FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
