@@ -103,7 +103,7 @@ public class YatriStatusFragment extends Fragment {
 
 
             final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,
-                    Constant.PATH + "Reports/getcurrentspot?iUserDetailsId=" + edtEnterYatraNumber.getText().toString(), null,
+                    Constant.PATH + "Reports/getcurrentspot?strUserCode=" + edtEnterYatraNumber.getText().toString(), null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
@@ -121,7 +121,7 @@ public class YatriStatusFragment extends Fragment {
                                     JSONObject obj2 = obj.getJSONObject("yatraDetails");
                                     cardViewBottom.setVisibility(View.VISIBLE);
                                     cardView.setVisibility(View.VISIBLE);
-                                    int yatriNo = obj1.getInt("iUserDetailsId");
+                                    int yatriNo = obj1.getInt("strUserCode");
                                     String firstName = obj1.getString("strUserFirstName");
                                     String lastName = obj1.getString("strUserLastName");
                                     String emailId = obj1.getString("strUserEmailId");

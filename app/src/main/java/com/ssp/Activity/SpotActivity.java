@@ -175,7 +175,7 @@ public class SpotActivity extends AppCompatActivity {
 
             final JSONObject object = new JSONObject();
             try {
-                object.put("iUserDetailId", edtYatriNumber.getText().toString());
+                object.put("strUserCode", edtYatriNumber.getText().toString());
 
             } catch (JSONException e) {
                 Toast.makeText(SpotActivity.this, "Something take longer time please try again..!", Toast.LENGTH_LONG).show();
@@ -199,7 +199,7 @@ public class SpotActivity extends AppCompatActivity {
                                     JSONObject obj = response.getJSONObject("data");
                                     cardViewBottom.setVisibility(View.VISIBLE);
                                     btnYatriDone.setVisibility(View.VISIBLE);
-                                    int yatriNo = obj.getInt("iUserDetailsId");
+                                    int yatriNo = obj.getInt("strUserCode");
                                     String firstName = obj.getString("strUserFirstName");
                                     String lastName = obj.getString("strUserLastName");
                                     String emailId = obj.getString("strUserEmailId");
@@ -210,7 +210,7 @@ public class SpotActivity extends AppCompatActivity {
                                     txtYatriMobileNo.setText(MobileNo);
                                 } else {
                                     progressDialog.dismiss();
-                                    Toast.makeText(SpotActivity.this, "Sorry", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SpotActivity.this, msg, Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e) {
                                 progressDialog.dismiss();
@@ -247,8 +247,9 @@ public class SpotActivity extends AppCompatActivity {
 
             final JSONObject object = new JSONObject();
             try {
-                object.put("iUserDetailsId", edtYatriNumber.getText().toString());
+                object.put("strUserCode", edtYatriNumber.getText().toString());
                 object.put("iSpotId", SpotId);
+                Log.d("spot", "Spot"+SpotId);
                 object.put("iYatraNo", yatraNumber);
                 object.put("strUpOrDown", sp);
 
@@ -271,7 +272,7 @@ public class SpotActivity extends AppCompatActivity {
                                 // Toast.makeText(this, ""+code, Toast.LENGTH_SHORT).show();
                                 if (code == true) {
                                     progressDialog.dismiss();
-                                    Toast.makeText(SpotActivity.this, "SuccessFull Done", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SpotActivity.this, msg, Toast.LENGTH_SHORT).show();
                                     edtYatriNumber.setText("");
                                     cardViewBottom.setVisibility(View.GONE);
                                     btnYatriDone.setVisibility(View.GONE);

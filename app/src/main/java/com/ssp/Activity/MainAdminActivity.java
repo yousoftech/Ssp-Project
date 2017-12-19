@@ -99,7 +99,7 @@ public class MainAdminActivity extends AppCompatActivity {
 
                 final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(MainAdminActivity.this);
                 LayoutInflater inflater = MainAdminActivity.this.getLayoutInflater();
-                dialogBuilder.setMessage("Are Confirm for Logout...?");
+                dialogBuilder.setMessage("Are you sure you want to logout ? ");
 
                 dialogBuilder.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {

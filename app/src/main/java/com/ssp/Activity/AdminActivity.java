@@ -90,7 +90,7 @@ public class AdminActivity extends AppCompatActivity {
 
 
             final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,
-                    Constant.PATH + "Reports/getcurrentspot?iUserDetailsId=" + edtEnterYatraNumber.getText().toString(), null,
+                    Constant.PATH + "Reports/getcurrentspot?strUserCode=" + edtEnterYatraNumber.getText().toString(), null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {

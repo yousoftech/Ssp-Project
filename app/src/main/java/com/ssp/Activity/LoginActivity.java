@@ -113,6 +113,8 @@ public class LoginActivity extends AppCompatActivity {
                                     editor.commit();
                                     Log.d("Login", "data" + obj);
                                     int id = obj.getInt("iUserDetailsId");
+                                    editor.putInt("LoggedUser",id);
+                                    editor.commit();
                                     String firstName = obj.getString("strUserFirstName");
                                     String lastName = obj.getString("strUserLastName");
                                     String emailId = obj.getString("strUserEmailId");
