@@ -48,7 +48,7 @@ import static com.ssp.Activity.LoginActivity.PREFS_NAME;
 public class SpotActivity extends AppCompatActivity {
 
     EditText edtYatriNumber;
-    TextView txtYatriNumber, txtYatriName, txtYatriEmailId, txtYatriMobileNo, txt;
+    TextView txtYatriNumber, txtYatriName, txtYatriEmailId, txtYatriMobileNo, txt,SpotNo,txtStatus,txtYatraNo;
     Button btnYatriDone, btnYatri, btnLogout;
     CardView cardViewBottom;
     Spinner spinnerSpot, spinnerYatra;
@@ -64,11 +64,10 @@ public class SpotActivity extends AppCompatActivity {
     ArrayList<spotYatra> arraySpot;
     int SpotId;
     ArrayList<String> spotArr;
-    Switch sw;
     boolean doubleBackToExitPressedOnce = false;
 
     String[] spot = {"1", "5", "10",};
-    String sp;
+    String sp="Up";
     String[] yatra = {"1", "2", "3", "4", "5", "6", "7",};
 
     @Override
@@ -86,14 +85,17 @@ public class SpotActivity extends AppCompatActivity {
         txtYatriNumber = (TextView) findViewById(R.id.txtYatriNumber);
         txtYatriEmailId = (TextView) findViewById(R.id.txtYatriEmailId);
         txtYatriMobileNo = (TextView) findViewById(R.id.txtYatriMobileNo);
+        SpotNo = (TextView) findViewById(R.id.SpotNo);
+        txtYatraNo = (TextView) findViewById(R.id.txtYatraNo);
+        txtStatus = (TextView) findViewById(R.id.txtStatus);
+
         cardViewBottom = (CardView) findViewById(R.id.cardBottom);
         spinnerSpot = (Spinner) findViewById(R.id.spinnerSpot);
         spinnerYatra = (Spinner) findViewById(R.id.spinnerYatra);
         btnLogout = (Button) findViewById(R.id.btnLogout);
-        // radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
-        sw = (Switch) findViewById(R.id.SwitchOnorOff);
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
 
-        sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+     /*   sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
@@ -102,18 +104,21 @@ public class SpotActivity extends AppCompatActivity {
                     sp = sw.getTextOff().toString();
                 }
             }
-        });
+        });*/
 
-     /*   radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+      radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
                 RadioButton rb = (RadioButton) radioGroup.findViewById(checkedId);
                 if (null != rb && checkedId > -1) {
 
                     sp = String.valueOf(rb.getText());
+
+                    Log.d("Event",sp);
+
                 }
             }
-        });*/
+        });
 
 
         btnYatri.setOnClickListener(new View.OnClickListener() {
@@ -176,6 +181,12 @@ public class SpotActivity extends AppCompatActivity {
             final JSONObject object = new JSONObject();
             try {
                 object.put("strUserCode", edtYatriNumber.getText().toString());
+               txtStatus.setText(""+sp);
+                SpotNo.setText(""+SpotId);
+                txtYatraNo.setText(""+yatraNumber);
+                Log.d("SpotNo","asd "+ SpotId);
+                Log.d("yatrano","asd "+ yatraNumber);
+                Log.d("status","asd "+ sp);
 
             } catch (JSONException e) {
                 Toast.makeText(SpotActivity.this, "Something take longer time please try again..!", Toast.LENGTH_LONG).show();
@@ -208,6 +219,15 @@ public class SpotActivity extends AppCompatActivity {
                                     txtYatriNumber.setText("" + yatriNo);
                                     txtYatriEmailId.setText(emailId);
                                     txtYatriMobileNo.setText(MobileNo);
+                                    Log.d("SpotNo","asd "+ SpotId);
+                                    Log.d("yatrano","asd "+ yatraNumber);
+                                    Log.d("status","asd "+ sp);
+
+
+
+
+
+
                                 } else {
                                     progressDialog.dismiss();
                                     Toast.makeText(SpotActivity.this, msg, Toast.LENGTH_SHORT).show();

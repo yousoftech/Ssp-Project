@@ -6,14 +6,17 @@
     android:background="@drawable/side_nav_bar"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerInParent="true"
-        android:text="Sharddha Sanskar Parivar"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+    <ImageView
+        android:layout_width="1000dp"
+        android:layout_height="1050dp"
+        android:src="@drawable/splashscreen"
+    android:layout_marginTop="30dp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+
+
+        />
+
 
 </RelativeLayout>
