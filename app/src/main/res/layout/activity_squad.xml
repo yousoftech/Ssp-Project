@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="#f2f4f6"
     tools:context="com.ssp.Activity.SpotActivity">
 
 
@@ -31,26 +31,26 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_below="@+id/txtSpotNumber"
-            android:spinnerMode="dialog"
-            android:gravity="center"
             android:layout_margin="10dp"
+            android:background="@drawable/spinner_border"
+            android:gravity="center"
             android:padding="5dp"
-            android:background="@drawable/spinner_border">
+            android:spinnerMode="dialog">
 
 
         </Spinner>
 
-            <EditText
-                android:id="@+id/edtYatriNumber"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_below="@+id/spinnerSpot"
-                android:layout_margin="10dp"
-                android:padding="5dp"
-                android:background="@drawable/edt_border"
-                android:hint="Enter Yatri Number"
-                android:inputType="number"
-                android:singleLine="true" />
+        <EditText
+            android:id="@+id/edtYatriNumber"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/spinnerSpot"
+            android:layout_margin="10dp"
+            android:background="@drawable/edt_border"
+            android:hint="Enter Yatri Number"
+            android:inputType="number"
+            android:padding="5dp"
+            android:singleLine="true" />
 
         <TextView
             android:id="@+id/txtYatraNumber"
@@ -67,18 +67,18 @@
             android:layout_width="280dp"
             android:layout_height="35dp"
             android:layout_below="@id/txtYatraNumber"
-            android:spinnerMode="dialog"
-            android:gravity="center"
             android:layout_margin="10dp"
-            android:background="@drawable/spinner_border">
-        </Spinner>
+            android:background="@drawable/spinner_border"
+            android:gravity="center"
+            android:spinnerMode="dialog"></Spinner>
+
         <TextView
             android:id="@+id/txtSwitch"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/edtYatriNumber"
-            android:layout_toRightOf="@+id/txtYatraNumber"
             android:layout_marginLeft="180dp"
+            android:layout_toRightOf="@+id/txtYatraNumber"
             android:text="Up / Down"
             android:textColor="#000" />
 
@@ -92,11 +92,10 @@
             android:button="@null"
             android:padding="20dp"
             android:paddingTop="500dp"
-            android:textOff="Down"
-            android:textOn="Up"
             android:textColorHighlight="@color/colorPrimaryDark"
             android:textColorHint="@color/colorPrimaryDark"
-            />
+            android:textOff="Down"
+            android:textOn="Up" />
 
         <Button
             android:id="@+id/btnYatri"
@@ -105,40 +104,39 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_below="@id/spinnerYatra"
-           android:layout_marginTop="25dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-
+            android:layout_marginTop="25dp"
             android:background="@color/colorPrimary"
             android:text="OK"
             android:textColor="#FFF"
             android:textStyle="bold" />
 
-     <!--   <RadioGroup
-            android:id="@+id/radioGroup"
-            android:layout_width="90dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/spinnerYatra"
-            >
+        <!--   <RadioGroup
+               android:id="@+id/radioGroup"
+               android:layout_width="90dp"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/spinnerYatra"
+               >
 
 
-            <RadioButton
-                android:id="@+id/rdbUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/colorPrimary"
-                android:checked="false"
-                android:text="UP" />
+               <RadioButton
+                   android:id="@+id/rdbUp"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:buttonTint="@color/colorPrimary"
+                   android:checked="false"
+                   android:text="UP" />
 
-            <RadioButton
-                android:id="@+id/rdbDown"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="false"
+               <RadioButton
+                   android:id="@+id/rdbDown"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:checked="false"
 
-                android:text="Down" />
+                   android:text="Down" />
 
-        </RadioGroup>-->
+           </RadioGroup>-->
 
     </RelativeLayout>
 
@@ -164,7 +162,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Yatri Number:111"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/txtYatriName"
@@ -172,7 +170,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtYatriNumber"
                 android:text="Name:Kush Shah"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/txtYatriMobileNo"
@@ -180,7 +178,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtYatriName"
                 android:text="Mobile No:9998038839"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/txtYatriEmailId"
@@ -188,7 +186,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/txtYatriMobileNo"
                 android:text="EmailId:kushshah1234.ks@gmail.com"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>
@@ -198,16 +196,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimary"
-        android:text="Confirm Yatri"
         android:layout_marginBottom="15dp"
-        android:textColor="#FFF"
-        android:textSize="20sp"
-        android:visibility="gone"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        />
-
+        android:background="@color/colorPrimary"
+        android:text="Confirm Yatri"
+        android:textColor="#FFF"
+        android:textSize="20sp"
+        android:visibility="visible" />
 
 
 </RelativeLayout>
