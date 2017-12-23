@@ -86,7 +86,7 @@
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/colorPrimary"
                 android:checked="true"
-                android:text="Up" />
+                android:text="In" />
 
             <RadioButton
                 android:id="@+id/rdbDown"
@@ -94,7 +94,7 @@
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/colorPrimary"
                 android:checked="false"
-                android:text="Down" />
+                android:text="Out" />
 
         </RadioGroup>
 

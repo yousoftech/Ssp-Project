@@ -32,33 +32,39 @@
             android:gravity="center"
             android:padding="5dp"
             android:spinnerMode="dialog"></Spinner>
-
-        <TextView
-            android:id="@+id/txtSpot1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/spinnerAdminSpot"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:text="Select Spot 2"
-            android:textSize="15dp" />
-
-        <Spinner
-            android:id="@+id/spinnerAdminSpot1"
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_below="@+id/txtSpot1"
-            android:layout_margin="10dp"
-            android:background="@drawable/spinner_border"
-            android:gravity="center"
-            android:padding="5dp"
-            android:spinnerMode="dialog"></Spinner>
+            android:layout_height="wrap_content"
+            android:layout_below="@id/spinnerAdminSpot"
+            >
+
+
+            <RadioButton
+                android:id="@+id/rdbUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorPrimary"
+                android:checked="true"
+                android:text="In" />
+
+            <RadioButton
+                android:id="@+id/rdbDown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/colorPrimary"
+                android:checked="false"
+                android:text="Out" />
+
+        </RadioGroup>
+
 
         <Button
             android:id="@+id/btnSubmitReport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/spinnerAdminSpot1"
+            android:layout_below="@+id/radioGroup"
             android:layout_margin="10dp"
             android:background="@color/colorPrimary"
             android:text="submit"

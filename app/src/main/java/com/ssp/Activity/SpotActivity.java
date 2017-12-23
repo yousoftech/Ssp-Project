@@ -67,7 +67,7 @@ public class SpotActivity extends AppCompatActivity {
     boolean doubleBackToExitPressedOnce = false;
 
     String[] spot = {"1", "5", "10",};
-    String sp="Up";
+    String sp="In";
     String[] yatra = {"1", "2", "3", "4", "5", "6", "7",};
 
     @Override
@@ -378,7 +378,7 @@ public class SpotActivity extends AppCompatActivity {
 
                                 } else {
                                     progressDialog.dismiss();
-                                    Toast.makeText(SpotActivity.this, "Sorry", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SpotActivity.this, msg, Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e) {
                                 progressDialog.dismiss();
@@ -414,7 +414,7 @@ public class SpotActivity extends AppCompatActivity {
 
                 final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(SpotActivity.this);
                 LayoutInflater inflater = SpotActivity.this.getLayoutInflater();
-                dialogBuilder.setMessage("Are Confirm for Logout...?");
+                dialogBuilder.setMessage("Are you sure you want to logout ?");
 
                 dialogBuilder.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {

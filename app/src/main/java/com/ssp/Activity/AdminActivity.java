@@ -128,7 +128,7 @@ public class AdminActivity extends AppCompatActivity {
 
                                 } else {
                                     progressDialog.dismiss();
-                                    Toast.makeText(AdminActivity.this, "Sorry", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(AdminActivity.this, msg, Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e) {
                                 progressDialog.dismiss();

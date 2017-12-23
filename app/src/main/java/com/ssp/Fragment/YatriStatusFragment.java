@@ -141,7 +141,7 @@ public class YatriStatusFragment extends Fragment {
 
                                 } else {
                                     progressDialog.dismiss();
-                                    Toast.makeText(getContext(), "Sorry", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
                                 }
                             } catch (JSONException e) {
                                 progressDialog.dismiss();
