@@ -3,6 +3,7 @@ package com.ssp.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,12 +17,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,7 +47,7 @@ import static com.ssp.Activity.LoginActivity.PREFS_NAME;
 public class SpotActivity extends AppCompatActivity {
 
     EditText edtYatriNumber;
-    TextView txtYatriNumber, txtYatriName, txtYatriEmailId, txtYatriMobileNo, txt,SpotNo,txtStatus,txtYatraNo;
+    TextView txtYatriNumber, txtYatriName, txtYatriEmailId, txtYatriMobileNo, txt, SpotNo, txtStatus, txtYatraNo;
     Button btnYatriDone, btnYatri, btnLogout;
     CardView cardViewBottom;
     Spinner spinnerSpot, spinnerYatra;
@@ -67,7 +66,7 @@ public class SpotActivity extends AppCompatActivity {
     boolean doubleBackToExitPressedOnce = false;
 
     String[] spot = {"1", "5", "10",};
-    String sp="In";
+    String sp = "In";
     String[] yatra = {"1", "2", "3", "4", "5", "6", "7",};
 
     @Override
@@ -106,7 +105,7 @@ public class SpotActivity extends AppCompatActivity {
             }
         });*/
 
-      radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
                 RadioButton rb = (RadioButton) radioGroup.findViewById(checkedId);
@@ -114,7 +113,7 @@ public class SpotActivity extends AppCompatActivity {
 
                     sp = String.valueOf(rb.getText());
 
-                    Log.d("Event",sp);
+                    Log.d("Event", sp);
 
                 }
             }
@@ -181,12 +180,12 @@ public class SpotActivity extends AppCompatActivity {
             final JSONObject object = new JSONObject();
             try {
                 object.put("strUserCode", edtYatriNumber.getText().toString());
-               txtStatus.setText(""+sp);
-                SpotNo.setText(""+SpotId);
-                txtYatraNo.setText(""+yatraNumber);
-                Log.d("SpotNo","asd "+ SpotId);
-                Log.d("yatrano","asd "+ yatraNumber);
-                Log.d("status","asd "+ sp);
+                txtStatus.setText("" + sp);
+                SpotNo.setText("" + SpotId);
+                txtYatraNo.setText("" + yatraNumber);
+                Log.d("SpotNo", "asd " + SpotId);
+                Log.d("yatrano", "asd " + yatraNumber);
+                Log.d("status", "asd " + sp);
 
             } catch (JSONException e) {
                 Toast.makeText(SpotActivity.this, "Something take longer time please try again..!", Toast.LENGTH_LONG).show();
@@ -219,13 +218,9 @@ public class SpotActivity extends AppCompatActivity {
                                     txtYatriNumber.setText("" + yatriNo);
                                     txtYatriEmailId.setText(emailId);
                                     txtYatriMobileNo.setText(MobileNo);
-                                    Log.d("SpotNo","asd "+ SpotId);
-                                    Log.d("yatrano","asd "+ yatraNumber);
-                                    Log.d("status","asd "+ sp);
-
-
-
-
+                                    Log.d("SpotNo", "asd " + SpotId);
+                                    Log.d("yatrano", "asd " + yatraNumber);
+                                    Log.d("status", "asd " + sp);
 
 
                                 } else {
@@ -269,7 +264,7 @@ public class SpotActivity extends AppCompatActivity {
             try {
                 object.put("strUserCode", edtYatriNumber.getText().toString());
                 object.put("iSpotId", SpotId);
-                Log.d("spot", "Spot"+SpotId);
+                Log.d("spot", "Spot" + SpotId);
                 object.put("iYatraNo", yatraNumber);
                 object.put("strUpOrDown", sp);
 
@@ -424,6 +419,7 @@ public class SpotActivity extends AppCompatActivity {
                         editor.clear();
                         editor.commit();
                         finish();
+                        startActivity(new Intent(SpotActivity.this, LoginActivity.class));
                         Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_SHORT).show();
                     }
                 });

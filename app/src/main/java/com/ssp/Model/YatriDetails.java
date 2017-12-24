@@ -5,7 +5,7 @@ package com.ssp.Model;
  */
 
 public class YatriDetails {
-        public String strUserCode;
+    public String strUserCode;
     public int iUserDetailsId;
     public int iSpotId;
     public int iYatraNo;
@@ -61,7 +61,6 @@ public class YatriDetails {
     }
 
 
-
-    }
+}
 
 

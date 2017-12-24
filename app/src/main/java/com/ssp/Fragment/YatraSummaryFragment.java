@@ -2,8 +2,6 @@ package com.ssp.Fragment;
 
 
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,13 +25,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.ssp.Activity.LoginActivity;
 import com.ssp.Adapter.adapterYatra;
 import com.ssp.Adapter.adapterYatri;
 import com.ssp.Model.YatriDetails;
-import com.ssp.Model.beanYatra;
 import com.ssp.Model.spotYatra;
-import com.ssp.Model.yatriNumber;
 import com.ssp.R;
 import com.ssp.Util.ConnectionDetector;
 import com.ssp.Util.Constant;
@@ -43,8 +38,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-
-import static com.ssp.Activity.LoginActivity.PREFS_NAME;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -60,15 +53,16 @@ public class YatraSummaryFragment extends Fragment {
     ArrayList<spotYatra> arraySpot;
     ArrayList<String> spotArr;
     int SpotId1, SpotId2;
-    yatriNumber yNumber;
-    ArrayList<yatriNumber> event;
+    //yatriNumber yNumber;
+    YatriDetails yatriDetails;
+    //ArrayList<yatriNumber> event;
     ArrayList<YatriDetails> YatriEvent;
     adapterYatri aYatri;
     adapterYatra ayatraDetails;
 
     RadioGroup radioGroup;
     RadioButton radioButton;
-    String sp="In";
+    String sp = "In";
 
     public YatraSummaryFragment() {
         // Required empty public constructor
@@ -110,7 +104,7 @@ public class YatraSummaryFragment extends Fragment {
 
                     sp = String.valueOf(rb.getText());
 
-                    Log.d("Event",sp);
+                    Log.d("Event", sp);
 
                 }
             }
@@ -119,13 +113,13 @@ public class YatraSummaryFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                    getYatris();
+                getYatris();
 
             }
         });
         spot();
-        event = new ArrayList<yatriNumber>();
-        YatriEvent  = new ArrayList<YatriDetails>();
+        //  event = new ArrayList<yatriNumber>();
+        YatriEvent = new ArrayList<YatriDetails>();
         return view;
     }
 
@@ -199,6 +193,7 @@ public class YatraSummaryFragment extends Fragment {
             Toast.makeText(getContext(), "Please check your internet connection before verification..!", Toast.LENGTH_LONG).show();
         }
     }
+
     public void getYatris() {
         if (detector.isConnectingToInternet()) {
             progressDialog = new ProgressDialog(getContext());
@@ -207,7 +202,7 @@ public class YatraSummaryFragment extends Fragment {
             progressDialog.show();
 
             JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.GET,
-                    Constant.PATH + "Reports/getdetailsbetweenspots?iSpotFrom=" + SpotId1 +"&strUpOrDown="+ sp, null, new Response.Listener<JSONObject>() {
+                    Constant.PATH + "Reports/getdetailsbetweenspots?iSpotFrom=" + SpotId1 + "&strUpOrDown=" + sp, null, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     Log.d("yatra", response.toString());
@@ -224,14 +219,14 @@ public class YatraSummaryFragment extends Fragment {
                                 int spotNo = obj.getInt("iSpotNo");
                                 String UserCode = obj.getString("strUserCode");
                                 String strUserName = obj.getString("strUserName");
-                                int iUserid = obj.getInt("iUserdetailsId");
+                                int iUserid = obj.getInt("iUserDetailsId");
                                 String upDown = obj.getString("strUpOrDown");
-                                Log.d("yatraNo" , yatraNo + "" );
-                                Log.d("spotNo" ,spotNo + "" );
-                                Log.d("UserCode" ,UserCode);
-                                Log.d("strUserName" ,strUserName );
-                                Log.d("upDown" ,upDown );
-                                Log.d("iUserid" ,iUserid+"" );
+                                Log.d("yatraNo", yatraNo + "");
+                                Log.d("spotNo", spotNo + "");
+                                Log.d("UserCode", UserCode);
+                                Log.d("strUserName", strUserName);
+                                Log.d("upDown", upDown);
+                                Log.d("iUserid", iUserid + "");
 
                                 yatra.setiSpotId(spotNo);
                                 yatra.setiYatraNo(yatraNo);
@@ -240,63 +235,8 @@ public class YatraSummaryFragment extends Fragment {
                                 yatra.setStrUserName(strUserName);
                                 yatra.setStrUpOrDown(upDown);
                                 YatriEvent.add(yatra);
+                                aYatri = new adapterYatri(getContext(), YatriEvent);
                                 //ayatraDetails = new adapterYatra(getContext(), YatriEvent);
-                                recyclerView.setAdapter(ayatraDetails);
-                                recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-                                progressDialog.dismiss();
-                            }
-                        }
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-
-                    if (progressDialog != null)
-                        progressDialog.dismiss();
-                }
-            });
-            objectRequest.setRetryPolicy(new DefaultRetryPolicy(
-                    30000,
-                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-            RequestQueue requestQueue = Volley.newRequestQueue(getContext());
-            requestQueue.add(objectRequest);
-        } else {
-            Toast.makeText(getContext(), "Please check your internet connection before verification..!", Toast.LENGTH_LONG).show();
-        }
-    }
-
-    public void YatriSpotDetail() {
-
-        if (detector.isConnectingToInternet()) {
-            progressDialog = new ProgressDialog(getContext());
-            progressDialog.setCancelable(false);
-            progressDialog.setMessage("Loading...");
-            progressDialog.show();
-
-            JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.GET,
-                    Constant.PATH + "Spot/getspotdetailsbyyatri?iUserDetailsId=", null, new Response.Listener<JSONObject>() {
-                @Override
-                public void onResponse(JSONObject response) {
-                    Log.d("yatra", response.toString());
-                    try {
-                        boolean code = response.getBoolean("status");
-                        if (code == true) {
-                            progressDialog.dismiss();
-                            JSONArray array = response.getJSONArray("data");
-                            Log.d("yatra", array.toString());
-                            for (int n = 0; n < array.length(); n++) {
-                                JSONObject obj = array.getJSONObject(n);
-                                yNumber = new yatriNumber();
-                                int yatraNo = obj.getInt("iYatraNo");
-                                yNumber.setYatriNumber(yatraNo);
-                                event.add(yNumber);
-                                aYatri = new adapterYatri(getContext(), event);
                                 recyclerView.setAdapter(aYatri);
                                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
                                 progressDialog.dismiss();
@@ -325,6 +265,62 @@ public class YatraSummaryFragment extends Fragment {
         } else {
             Toast.makeText(getContext(), "Please check your internet connection before verification..!", Toast.LENGTH_LONG).show();
         }
-
     }
+
+//    public void YatriSpotDetail() {
+//
+//        if (detector.isConnectingToInternet()) {
+//            progressDialog = new ProgressDialog(getContext());
+//            progressDialog.setCancelable(false);
+//            progressDialog.setMessage("Loading...");
+//            progressDialog.show();
+//
+//            JsonObjectRequest objectRequest = new JsonObjectRequest(Request.Method.GET,
+//                    Constant.PATH + "Spot/getspotdetailsbyyatri?iUserDetailsId=", null, new Response.Listener<JSONObject>() {
+//                @Override
+//                public void onResponse(JSONObject response) {
+//                    Log.d("yatra", response.toString());
+//                    try {
+//                        boolean code = response.getBoolean("status");
+//                        if (code == true) {
+//                            progressDialog.dismiss();
+//                            JSONArray array = response.getJSONArray("data");
+//                            Log.d("yatra", array.toString());
+//                            for (int n = 0; n < array.length(); n++) {
+//                                JSONObject obj = array.getJSONObject(n);
+//                                yNumber = new yatriNumber();
+//                                int yatraNo = obj.getInt("iYatraNo");
+//                                yNumber.setYatriNumber(yatraNo);
+//                                event.add(yNumber);
+//                                aYatri = new adapterYatri(getContext(), event);
+//                                recyclerView.setAdapter(aYatri);
+//                                recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+//                                progressDialog.dismiss();
+//                            }
+//                        }
+//
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                }
+//            }, new Response.ErrorListener() {
+//                @Override
+//                public void onErrorResponse(VolleyError error) {
+//
+//                    if (progressDialog != null)
+//                        progressDialog.dismiss();
+//                }
+//            });
+//            objectRequest.setRetryPolicy(new DefaultRetryPolicy(
+//                    30000,
+//                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+//                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+//            RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+//            requestQueue.add(objectRequest);
+//        } else {
+//            Toast.makeText(getContext(), "Please check your internet connection before verification..!", Toast.LENGTH_LONG).show();
+//        }
+//
+//    }
 }

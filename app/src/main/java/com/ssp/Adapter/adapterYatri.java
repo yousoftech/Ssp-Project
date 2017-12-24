@@ -7,8 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.ssp.Model.beanYatra;
-import com.ssp.Model.yatriNumber;
+import com.ssp.Model.YatriDetails;
 import com.ssp.R;
 
 import java.util.ArrayList;
@@ -19,10 +18,10 @@ import java.util.ArrayList;
 
 public class adapterYatri extends RecyclerView.Adapter<adapterYatri.RecyclerViewHolder> {
     Context context;
-    ArrayList<yatriNumber> event;
+    ArrayList<YatriDetails> event;
     LayoutInflater inflater;
 
-    public adapterYatri(Context context, ArrayList<yatriNumber> event) {
+    public adapterYatri(Context context, ArrayList<YatriDetails> event) {
         this.event = event;
         this.context = context;
         inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
@@ -37,7 +36,8 @@ public class adapterYatri extends RecyclerView.Adapter<adapterYatri.RecyclerView
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-        holder.txtYatriNumber.setText("" + event.get(position).getYatriNumber());
+        holder.txtYatriNumber.setText("Yatri No: " + event.get(position).getiYatraNo());
+        holder.txtYatriName.setText("" + event.get(position).getStrUserName());
     }
 
     @Override
@@ -47,11 +47,12 @@ public class adapterYatri extends RecyclerView.Adapter<adapterYatri.RecyclerView
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
-        TextView txtYatriNumber;
+        TextView txtYatriNumber, txtYatriName;
 
         public RecyclerViewHolder(View itemView) {
             super(itemView);
             txtYatriNumber = (TextView) itemView.findViewById(R.id.txtYatriAdminNumber);
+            txtYatriName = (TextView) itemView.findViewById(R.id.txtYatriAdminName);
         }
     }
 }

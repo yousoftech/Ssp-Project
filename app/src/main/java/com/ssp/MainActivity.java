@@ -1,5 +1,6 @@
 package com.ssp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.ssp.Activity.LoginActivity;
 import com.ssp.Fragment.AboutUsFragment;
 import com.ssp.Fragment.ChangePassdwordFragment;
 import com.ssp.Fragment.ContactUsFragment;
@@ -127,6 +129,7 @@ public class MainActivity extends AppCompatActivity
             editor.remove("logged");
             editor.clear();
             editor.commit();
+            startActivity(new Intent(MainActivity.this, LoginActivity.class));
             finish();
             Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_SHORT).show();
         }
