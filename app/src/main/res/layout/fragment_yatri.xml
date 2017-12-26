@@ -5,8 +5,23 @@
     tools:context="com.ssp.Fragment.YatriFragment">
 
     <!-- TODO: Update blank fragment layout -->
-   <android.support.v7.widget.RecyclerView
-       android:id="@+id/recylerViewYatri"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recylerViewYatri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/txtCongratulation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/recylerViewYatri"
+        android:layout_centerInParent="true"
+        android:text="Congratulation!!!!"
+        android:textAllCaps="true"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
 </RelativeLayout>

@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -45,6 +46,7 @@ public class YatriFragment extends Fragment {
     beanYatra yatra;
     ArrayList<beanYatra> event;
     ConnectionDetector detector;
+    TextView txtCongo;
     adapterYatra aYatra;
     SharedPreferences preferences;
     int userId;
@@ -63,6 +65,7 @@ public class YatriFragment extends Fragment {
         preferences = preferences = getContext().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         recyclerView = (RecyclerView) view.findViewById(R.id.recylerViewYatri);
         userId = preferences.getInt("userId", 0);
+        txtCongo = (TextView) view.findViewById(R.id.txtCongratulation);
         event = new ArrayList<beanYatra>();
         detailYatra();
         return view;
