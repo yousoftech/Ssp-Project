@@ -69,7 +69,7 @@ public class AdminActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (edtEnterYatraNumber.getText().length() < 1) {
-                    edtEnterYatraNumber.setError("Please Enter UserName");
+                    edtEnterYatraNumber.setError("Please Enter Yatri Number");
                 } else {
                     yatriDetail();
                 }

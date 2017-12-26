@@ -154,7 +154,7 @@ public class YatraSummaryFragment extends Fragment {
                                     for (int i = 0; i < obj.length(); i++) {
                                         JSONObject jresponse = obj.getJSONObject(i);
                                         int spotId = jresponse.getInt("iSpotId");
-                                        int spotNo = jresponse.getInt("iSpotNo");
+                                        String spotNo = jresponse.getString("iSpotNo");
                                         spotYatra = new spotYatra();
                                         spotYatra.setSpotId(spotId);
                                         spotYatra.setSpotNo(spotNo);

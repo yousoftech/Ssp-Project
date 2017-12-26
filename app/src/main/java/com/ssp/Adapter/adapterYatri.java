@@ -36,7 +36,7 @@ public class adapterYatri extends RecyclerView.Adapter<adapterYatri.RecyclerView
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-        holder.txtYatriNumber.setText("Yatri No: " + event.get(position).getiYatraNo());
+        holder.txtYatriNumber.setText("Yatri No: " + event.get(position).getStrUserCode());
         holder.txtYatriName.setText("" + event.get(position).getStrUserName());
     }
 

@@ -6,7 +6,8 @@ package com.ssp.Model;
 
 public class spotYatra {
 
-    int spotId, spotNo;
+    int spotId;
+    String spotNo;
 
     public int getSpotId() {
         return spotId;
@@ -16,11 +17,11 @@ public class spotYatra {
         this.spotId = spotId;
     }
 
-    public int getSpotNo() {
+    public String getSpotNo() {
         return spotNo;
     }
 
-    public void setSpotNo(int spotNo) {
+    public void setSpotNo(String spotNo) {
         this.spotNo = spotNo;
     }
 }
