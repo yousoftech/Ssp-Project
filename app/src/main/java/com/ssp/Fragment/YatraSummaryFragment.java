@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -50,6 +51,7 @@ public class YatraSummaryFragment extends Fragment {
     ProgressDialog progressDialog;
     ConnectionDetector detector;
     spotYatra spotYatra;
+    TextView txtTotalYatri;
     ArrayList<spotYatra> arraySpot;
     ArrayList<String> spotArr;
     int SpotId1, SpotId2;
@@ -59,7 +61,7 @@ public class YatraSummaryFragment extends Fragment {
     ArrayList<YatriDetails> YatriEvent;
     adapterYatri aYatri;
     adapterYatra ayatraDetails;
-
+    String total;
     RadioGroup radioGroup;
     RadioButton radioButton;
     String sp = "In";
@@ -80,6 +82,7 @@ public class YatraSummaryFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_yatra_summary, container, false);
         detector = new ConnectionDetector(getContext());
         spinnerAdmin1 = (Spinner) view.findViewById(R.id.spinnerAdminSpot);
+        txtTotalYatri = (TextView) view.findViewById(R.id.txtTotalYatri);
         radioGroup = (RadioGroup) view.findViewById(R.id.radioGroup);
         btnShow = (Button) view.findViewById(R.id.btnSubmitReport);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerAdmin);
@@ -211,6 +214,9 @@ public class YatraSummaryFragment extends Fragment {
                         if (code == true) {
                             progressDialog.dismiss();
                             JSONArray array = response.getJSONArray("data");
+                            total = String.valueOf(array.length());
+                            txtTotalYatri.setVisibility(View.VISIBLE);
+                            txtTotalYatri.setText("Total Yatri: " + total);
                             Log.d("yatridetails", array.toString());
                             for (int n = 0; n < array.length(); n++) {
                                 JSONObject obj = array.getJSONObject(n);

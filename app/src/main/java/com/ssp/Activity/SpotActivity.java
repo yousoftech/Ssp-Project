@@ -47,7 +47,8 @@ import static com.ssp.Activity.LoginActivity.PREFS_NAME;
 public class SpotActivity extends AppCompatActivity {
 
     EditText edtYatriNumber;
-    TextView txtYatriNumber, txtYatriName, txtYatriEmailId, txtYatriMobileNo, txt, SpotNo, txtStatus, txtYatraNo;
+    TextView txtYatriNumber, txtYatriName, txtYatriEmailId, txtYatriMobileNo, txt, SpotNo, txtStatus, txtYatraNo,
+            txtYatraNoSpot, txtYatraSpotNo, txtYatraTimeSpot, txtYatraUpDown;
     Button btnYatriDone, btnYatri, btnLogout;
     CardView cardViewBottom;
     Spinner spinnerSpot, spinnerYatra;
@@ -62,8 +63,10 @@ public class SpotActivity extends AppCompatActivity {
     spotYatra spotYatra;
     ArrayList<spotYatra> arraySpot;
     int SpotId;
+    CardView cardView;
     ArrayList<String> spotArr;
     boolean doubleBackToExitPressedOnce = false;
+
 
     String[] spot = {"1", "5", "10",};
     String sp = "In";
@@ -80,6 +83,12 @@ public class SpotActivity extends AppCompatActivity {
         btnYatriDone = (Button) findViewById(R.id.btnYatriDone);
         edtYatriNumber = (EditText) findViewById(R.id.edtYatriNumber);
         txt = (TextView) findViewById(R.id.txtTitle);
+        cardView = (CardView) findViewById(R.id.cardSpot);
+        txtYatraNoSpot = (TextView) findViewById(R.id.txtYatraNumberSpot);
+        txtYatraSpotNo = (TextView) findViewById(R.id.txtSNumberSpot);
+        txtYatraTimeSpot = (TextView) findViewById(R.id.txtDateTimeSpot);
+        txtYatraUpDown = (TextView) findViewById(R.id.txtUpDownSpot);
+
         txtYatriName = (TextView) findViewById(R.id.txtYatriName);
         txtYatriNumber = (TextView) findViewById(R.id.txtYatriNumber);
         txtYatriEmailId = (TextView) findViewById(R.id.txtYatriEmailId);
@@ -126,7 +135,7 @@ public class SpotActivity extends AppCompatActivity {
                 if (edtYatriNumber.getText().length() < 1) {
                     edtYatriNumber.setError("Please Enter UserName");
                 } else {
-                    yatriFind();
+                    yatriDetail();
                 }
             }
         });
@@ -141,7 +150,7 @@ public class SpotActivity extends AppCompatActivity {
         spinnerSpot.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                //spotNumber = spinnerSpot.getSelectedItem().toString();
+                spotNumber = spinnerSpot.getSelectedItem().toString();
                 spotYatra spotYatra = arraySpot.get(i);
                 SpotId = spotYatra.getSpotId();
 
@@ -186,6 +195,7 @@ public class SpotActivity extends AppCompatActivity {
                 Log.d("SpotNo", "asd " + SpotId);
                 Log.d("yatrano", "asd " + yatraNumber);
                 Log.d("status", "asd " + sp);
+
 
             } catch (JSONException e) {
                 Toast.makeText(SpotActivity.this, "Something take longer time please try again..!", Toast.LENGTH_LONG).show();
@@ -459,6 +469,91 @@ public class SpotActivity extends AppCompatActivity {
                 doubleBackToExitPressedOnce = false;
             }
         }, 2000);
+    }
+
+    private void yatriDetail() {
+
+        if (detector.isConnectingToInternet()) {
+
+            progressDialog = new ProgressDialog(this);
+            progressDialog.setCancelable(false);
+            progressDialog.setMessage("Loading...");
+            //progressDialog.show();
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            txtStatus.setText("Status: " + sp);
+            SpotNo.setText("" + spotNumber);
+            txtYatraNo.setText("Yatra No: " + yatraNumber);
+            Log.d("SpotNo", "asd " + SpotId);
+            Log.d("yatrano", "asd " + yatraNumber);
+            Log.d("status", "asd " + sp);
+
+
+            final JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,
+                    Constant.PATH + "Reports/getcurrentspot?strUserCode=" + edtYatriNumber.getText().toString(), null,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Log.d("RESPONSE", response.toString());
+
+                            try {
+                                boolean code = response.getBoolean("status");
+                                Log.d("Login", "" + code);
+                                String msg = response.getString("message");
+                                // Toast.makeText(this, ""+code, Toast.LENGTH_SHORT).show();
+                                if (code == true) {
+                                    progressDialog.dismiss();
+                                    JSONObject obj = response.getJSONObject("data");
+                                    JSONObject obj1 = obj.getJSONObject("vuser");
+                                    JSONObject obj2 = obj.getJSONObject("yatraDetails");
+                                    cardView.setVisibility(View.VISIBLE);
+                                    cardViewBottom.setVisibility(View.VISIBLE);
+                                    btnYatriDone.setVisibility(View.VISIBLE);
+                                    int yatriNo = obj1.getInt("strUserCode");
+                                    String firstName = obj1.getString("strUserFirstName");
+                                    String lastName = obj1.getString("strUserLastName");
+                                    String emailId = obj1.getString("strUserEmailId");
+                                    String MobileNo = obj1.getString("strMobileNo");
+                                    int YatraNo = obj2.getInt("iYatraNo");
+                                    int lastSpotNo = obj2.getInt("iSpotNo");
+                                    String lastTime = obj2.getString("datetimeYatraTime");
+                                    String upDown = obj2.getString("strUpOrDown");
+
+                                    txtYatriName.setText("Name: " + firstName + " " + lastName);
+                                    txtYatriNumber.setText("Yatri Number: " + yatriNo);
+                                    txtYatriEmailId.setText("EmailId: " + emailId);
+                                    txtYatriMobileNo.setText("Mobile No: " + MobileNo);
+                                    txtYatraNoSpot.setText("" + YatraNo);
+                                    txtYatraSpotNo.setText("" + lastSpotNo);
+                                    txtYatraTimeSpot.setText("" + lastTime);
+                                    txtYatraUpDown.setText(upDown);
+                                    progressDialog.dismiss();
+                                } else {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(SpotActivity.this, msg, Toast.LENGTH_SHORT).show();
+                                }
+                            } catch (JSONException e) {
+                                progressDialog.dismiss();
+                                Toast.makeText(SpotActivity.this, "Something take longer time please try again..!", Toast.LENGTH_LONG).show();
+                                e.printStackTrace();
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    if (progressDialog != null)
+                        progressDialog.dismiss();
+                    Log.d("RESPONSE", "That didn't work!");
+                }
+            });
+            request.setRetryPolicy(new DefaultRetryPolicy(
+                    30000,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+            requestQueue.add(request);
+        } else {
+            Toast.makeText(SpotActivity.this, "Please check your internet connection before verification..!", Toast.LENGTH_LONG).show();
+        }
+
     }
 
 }

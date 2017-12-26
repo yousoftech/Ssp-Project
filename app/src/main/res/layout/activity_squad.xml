@@ -12,295 +12,354 @@
         android:id="@+id/toolbar"
         layout="@layout/app_toolbar"></include>
 
-    <RelativeLayout
-        android:id="@+id/relativeTop"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/toolbar">
-
-        <TextView
-            android:id="@+id/txtSpotNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Select Spot Number:"
-            android:textColor="#000" />
-
-        <Spinner
-            android:id="@+id/spinnerSpot"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_below="@+id/txtSpotNumber"
-            android:layout_margin="10dp"
-            android:background="@drawable/spinner_border"
-            android:gravity="center"
-            android:padding="5dp"
-            android:spinnerMode="dialog">
-
-
-        </Spinner>
-
-        <EditText
-            android:id="@+id/edtYatriNumber"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_below="@+id/spinnerSpot"
-            android:layout_margin="10dp"
-            android:background="@drawable/edt_border"
-            android:hint="Enter Yatri Number"
-            android:inputType="number"
-            android:padding="5dp"
-            android:singleLine="true" />
-
-        <TextView
-            android:id="@+id/txtYatraNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/edtYatriNumber"
-            android:layout_marginLeft="10dp"
-            android:text="Select Yatra Number:"
-            android:textColor="#000" />
-
-
-        <Spinner
-            android:id="@+id/spinnerYatra"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_below="@id/txtYatraNumber"
-            android:layout_margin="10dp"
-            android:background="@drawable/spinner_border"
-            android:gravity="center"
-            android:spinnerMode="dialog"></Spinner>
-        <RadioGroup
-            android:id="@+id/radioGroup"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/spinnerYatra"
-            >
-
-
-            <RadioButton
-                android:id="@+id/rdbUp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/colorPrimary"
-                android:checked="true"
-                android:text="In" />
-
-            <RadioButton
-                android:id="@+id/rdbDown"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/colorPrimary"
-                android:checked="false"
-                android:text="Out" />
-
-        </RadioGroup>
-
-
-
-      <!--  <Switch
-            android:id="@+id/SwitchOnorOff"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/txtYatraNumber"
-            android:layout_toEndOf="@+id/spinnerYatra"
-            android:layout_toRightOf="@+id/spinnerYatra"
-            android:button="@null"
-            android:padding="20dp"
-            android:paddingTop="500dp"
-            android:textColorHighlight="@color/colorPrimaryDark"
-            android:textColorHint="@color/colorPrimaryDark"
-            android:textOff="Down"
-            android:textOn="Up" />-->
-
-        <Button
-            android:id="@+id/btnYatri"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@id/radioGroup"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="25dp"
-            android:background="@color/colorPrimary"
-            android:text="OK"
-            android:textColor="#FFF"
-            android:textStyle="bold" />
-
-        <!--   <RadioGroup
-               android:id="@+id/radioGroup"
-               android:layout_width="90dp"
-               android:layout_height="wrap_content"
-               android:layout_below="@id/spinnerYatra"
-               >
-
-
-               <RadioButton
-                   android:id="@+id/rdbUp"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:buttonTint="@color/colorPrimary"
-                   android:checked="false"
-                   android:text="UP" />
-
-               <RadioButton
-                   android:id="@+id/rdbDown"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:checked="false"
-
-                   android:text="Down" />
-
-           </RadioGroup>-->
-
-    </RelativeLayout>
-
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/cardBottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/relativeTop"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:visibility="gone"
-        app:cardElevation="0dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="20dp">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/relativeTop"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/lblYatriCode"
-                android:text="Code : "
-                android:textSize="20sp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true">
 
-                />
-            <TextView
-                android:id="@+id/txtYatriNumber"
-                android:layout_toRightOf="@+id/lblYatriCode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Yatri Number:111"
-                android:textSize="20sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/lblYatriCode"
-                android:id="@+id/lblYatriName"
-                android:text="Name : "
-                android:textSize="20sp"/>
+                <TextView
+                    android:id="@+id/txtSpotNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Select Spot Number:"
+                    android:textColor="#000" />
 
-            <TextView
-                android:id="@+id/txtYatriName"
-                android:layout_below="@+id/txtYatriNumber"
-                android:layout_toRightOf="@+id/lblYatriName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name:Kush Shah"
-                android:textSize="20sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/lblYatriNo"
-                android:layout_below="@+id/lblYatriName"
-                android:text="Contact No : "
-                android:textSize="20sp"/>
+                <Spinner
+                    android:id="@+id/spinnerSpot"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/txtSpotNumber"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/spinner_border"
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:spinnerMode="dialog">
 
 
-            <TextView
-                android:layout_toRightOf="@+id/lblYatriNo"
-                android:layout_below="@+id/txtYatriName"
-                android:id="@+id/txtYatriMobileNo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mobile No:9998038839"
-                android:textSize="20sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/lblYatriEmailId"
-                android:layout_below="@+id/lblYatriNo"
-                android:text="EmailId : "
-                android:textSize="20sp"/>
-            <TextView
-                android:layout_toRightOf="@+id/lblYatriEmailId"
-                android:id="@+id/txtYatriEmailId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtYatriMobileNo"
-                android:text="EmailId:kushshah1234.ks@gmail.com"
-                android:textSize="20sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/lblSpotNo"
-                android:layout_below="@+id/lblYatriEmailId"
-                android:text="Spot No : "
-                android:textSize="20sp"/>
-            <TextView
-                android:layout_toRightOf="@+id/lblSpotNo"
-                android:id="@+id/SpotNo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtYatriEmailId"
-                android:text="5"
-                android:textSize="20sp" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/lblYatraNo"
-                android:layout_below="@+id/lblSpotNo"
-                android:text="Yatra No : "
-                android:textSize="20sp"/>
-            <TextView
-                android:layout_toRightOf="@+id/lblYatraNo"
-                android:id="@+id/txtYatraNo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/SpotNo"
-                android:text="2"
-                android:textSize="20sp" />
+                </Spinner>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/lblStatus"
-                android:layout_below="@+id/lblYatraNo"
-                android:text="Status : "
-                android:textSize="20sp"/>
-            <TextView
-                android:layout_toRightOf="@+id/lblStatus"
-                android:id="@+id/txtStatus"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/txtYatraNo"
-                android:text="In"
-                android:textSize="20sp" />
+                <EditText
+                    android:id="@+id/edtYatriNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/spinnerSpot"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/edt_border"
+                    android:hint="Enter Yatri Number"
+                    android:inputType="number"
+                    android:padding="5dp"
+                    android:singleLine="true" />
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/txtYatraNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/edtYatriNumber"
+                    android:layout_marginLeft="10dp"
+                    android:text="Select Yatra Number:"
+                    android:textColor="#000" />
 
-    </android.support.v7.widget.CardView>
+
+                <Spinner
+                    android:id="@+id/spinnerYatra"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:layout_below="@id/txtYatraNumber"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/spinner_border"
+                    android:gravity="center"
+                    android:spinnerMode="dialog"></Spinner>
+
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/spinnerYatra"
+                    android:orientation="horizontal">
+
+
+                    <RadioButton
+                        android:id="@+id/rdbUp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorPrimary"
+                        android:checked="true"
+                        android:text="In" />
+
+                    <RadioButton
+                        android:id="@+id/rdbDown"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:buttonTint="@color/colorPrimary"
+                        android:checked="false"
+                        android:text="Out" />
+
+                </RadioGroup>
+
+
+                <!--  <Switch
+                      android:id="@+id/SwitchOnorOff"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_below="@+id/txtYatraNumber"
+                      android:layout_toEndOf="@+id/spinnerYatra"
+                      android:layout_toRightOf="@+id/spinnerYatra"
+                      android:button="@null"
+                      android:padding="20dp"
+                      android:paddingTop="500dp"
+                      android:textColorHighlight="@color/colorPrimaryDark"
+                      android:textColorHint="@color/colorPrimaryDark"
+                      android:textOff="Down"
+                      android:textOn="Up" />-->
+
+                <Button
+                    android:id="@+id/btnYatri"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@id/radioGroup"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@color/colorPrimary"
+                    android:text="OK"
+                    android:textColor="#FFF"
+                    android:textStyle="bold" />
+
+                <!--   <RadioGroup
+                       android:id="@+id/radioGroup"
+                       android:layout_width="90dp"
+                       android:layout_height="wrap_content"
+                       android:layout_below="@id/spinnerYatra"
+                       >
+
+
+                       <RadioButton
+                           android:id="@+id/rdbUp"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:buttonTint="@color/colorPrimary"
+                           android:checked="false"
+                           android:text="UP" />
+
+                       <RadioButton
+                           android:id="@+id/rdbDown"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:checked="false"
+
+                           android:text="Down" />
+
+                   </RadioGroup>-->
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardSpot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relativeTop"
+                android:layout_margin="10dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="#f2f4f8"
+                app:cardElevation="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp">
+
+                    <RelativeLayout
+                        android:id="@+id/relativeYatraSpot"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/txt_border">
+
+                        <TextView
+                            android:id="@+id/txtYatraNumberSpot"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_margin="10dp"
+                            android:text="1"
+                            android:textColor="#222222"
+                            android:textSize="30dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txtYatraNumberSpot"
+                            android:layout_centerHorizontal="true"
+                            android:text="Yatra"
+                            android:textColor="#222222"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/relativeSpot"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/relativeYatra"
+                        android:background="@drawable/txt_border">
+
+                        <TextView
+                            android:id="@+id/txtSNumberSpot"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_margin="5dp"
+                            android:text="1"
+                            android:textColor="#222222"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txtSNumberSpot"
+                            android:layout_centerHorizontal="true"
+                            android:text="Spot"
+                            android:textColor="#222222"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/txtDateTimeSpot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_toRightOf="@+id/relativeSpot"
+                        android:gravity="center"
+                        android:text="25/12/2017 12:00"
+                        android:textColor="#222222"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/txtUpDownSpot"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtDateTimeSpot"
+                        android:layout_margin="20dp"
+                        android:layout_toRightOf="@+id/relativeSpot"
+                        android:gravity="center"
+                        android:text="UP"
+                        android:textColor="#222222"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardBottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardSpot"
+                android:layout_margin="10dp"
+                android:visibility="gone"
+                app:cardElevation="0dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="20dp">
+
+                    <TextView
+                        android:id="@+id/txtYatriNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yatri Number:111"
+                        android:textSize="20sp" />
+
+
+                    <TextView
+                        android:id="@+id/txtYatriName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtYatriNumber"
+                        android:text="Name:Kush Shah"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/txtYatriMobileNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtYatriName"
+                        android:text="9998038839"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/txtYatriEmailId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtYatriMobileNo"
+                        android:text=""
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/SpotNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtYatriEmailId"
+                        android:text="5"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/txtYatraNo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/SpotNo"
+                        android:text="2"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/txtStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtYatraNo"
+                        android:text="In"
+                        android:textSize="20sp" />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
 
     <Button
         android:id="@+id/btnYatriDone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_below="@+id/cardBottom"
+        android:layout_margin="10dp"
         android:background="@color/colorPrimary"
         android:text="Confirm Yatri"
         android:textColor="#FFF"
         android:textSize="20sp"
-        android:visibility="visible" />
-
+        android:visibility="gone" />
+        </RelativeLayout>
+    </ScrollView>
 
 </RelativeLayout>

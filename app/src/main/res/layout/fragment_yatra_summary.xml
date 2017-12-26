@@ -34,10 +34,10 @@
             android:spinnerMode="dialog"></Spinner>
         <RadioGroup
             android:id="@+id/radioGroup"
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/spinnerAdminSpot"
+            android:orientation="horizontal"
             >
 
 
@@ -73,11 +73,24 @@
 
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/txtTotalYatri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relativeAdmin"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="Total Yatri:120"
+        android:textColor="#000"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerAdmin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/relativeAdmin"
+        android:layout_below="@+id/txtTotalYatri"
         android:layout_margin="10dp"></android.support.v7.widget.RecyclerView>
 
 </RelativeLayout>
