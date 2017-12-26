@@ -12,24 +12,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashScreen">
+        <activity
+            android:name=".SplashScreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.LoginActivity" />
-        <activity android:name=".Activity.AdminActivity" />
-        <activity android:name=".Activity.SpotActivity" />
-        <activity android:name=".Activity.UserActivity" />
+        <activity
+            android:name=".Activity.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.AdminActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.SpotActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activity.UserActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Activity.MainAdminActivity"
-            android:label="@string/title_activity_main_admin"></activity>
+            android:label="@string/title_activity_main_admin"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
