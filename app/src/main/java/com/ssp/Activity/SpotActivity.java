@@ -142,6 +142,7 @@ public class SpotActivity extends AppCompatActivity {
         btnYatriDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                cardView.setVisibility(View.GONE);
                 yatriDone();
             }
         });
@@ -504,28 +505,45 @@ public class SpotActivity extends AppCompatActivity {
                                     progressDialog.dismiss();
                                     JSONObject obj = response.getJSONObject("data");
                                     JSONObject obj1 = obj.getJSONObject("vuser");
+                                        Log.e("chck","asd");
+                                    Log.e("Obj",obj1 + " ");
+
                                     JSONObject obj2 = obj.getJSONObject("yatraDetails");
-                                    cardView.setVisibility(View.VISIBLE);
+
+                                            int YatraNo = obj2.getInt("iYatraNo");
+                                            int lastSpotNo = obj2.getInt("iSpotNo");
+                                            String lastTime = obj2.getString("datetimeYatraTime");
+                                            String upDown = obj2.getString("strUpOrDown");
+
+                                            txtYatraNoSpot.setText("" + YatraNo);
+                                            txtYatraSpotNo.setText("" + lastSpotNo);
+                                            txtYatraTimeSpot.setText("" + lastTime);
+                                            txtYatraUpDown.setText(upDown);
+                                            if(YatraNo ==0 )
+                                            {
+                                                cardView.setVisibility(View.GONE);
+
+                                            }
+                                            else{
+                                                cardView.setVisibility(View.VISIBLE);
+
+                                            }
+
+
                                     cardViewBottom.setVisibility(View.VISIBLE);
                                     btnYatriDone.setVisibility(View.VISIBLE);
-                                    int yatriNo = obj1.getInt("strUserCode");
+                                    String yatriNo = obj1.getString("strUserCode");
                                     String firstName = obj1.getString("strUserFirstName");
                                     String lastName = obj1.getString("strUserLastName");
                                     String emailId = obj1.getString("strUserEmailId");
                                     String MobileNo = obj1.getString("strMobileNo");
-                                    int YatraNo = obj2.getInt("iYatraNo");
-                                    int lastSpotNo = obj2.getInt("iSpotNo");
-                                    String lastTime = obj2.getString("datetimeYatraTime");
-                                    String upDown = obj2.getString("strUpOrDown");
+
 
                                     txtYatriName.setText("Name: " + firstName + " " + lastName);
                                     txtYatriNumber.setText("Yatri Number: " + yatriNo);
                                     txtYatriEmailId.setText("EmailId: " + emailId);
                                     txtYatriMobileNo.setText("Mobile No: " + MobileNo);
-                                    txtYatraNoSpot.setText("" + YatraNo);
-                                    txtYatraSpotNo.setText("" + lastSpotNo);
-                                    txtYatraTimeSpot.setText("" + lastTime);
-                                    txtYatraUpDown.setText(upDown);
+
                                     progressDialog.dismiss();
                                 } else {
                                     progressDialog.dismiss();

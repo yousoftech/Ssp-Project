@@ -115,7 +115,7 @@ public class YatraSummaryFragment extends Fragment {
         btnShow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                YatriEvent.clear();
                 getYatris();
 
             }
@@ -199,6 +199,7 @@ public class YatraSummaryFragment extends Fragment {
 
     public void getYatris() {
         if (detector.isConnectingToInternet()) {
+
             progressDialog = new ProgressDialog(getContext());
             progressDialog.setCancelable(false);
             progressDialog.setMessage("Loading...");

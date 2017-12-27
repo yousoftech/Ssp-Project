@@ -96,6 +96,8 @@ public class YatriStatusFragment extends Fragment {
                 if (edtEnterYatraNumber.getText().length() < 1) {
                     edtEnterYatraNumber.setError("Please Enter UserName");
                 } else {
+                    event.clear();
+Log.d("Evensd",event+"");
                     yatriDetails();
                     yatriDetail();
                 }

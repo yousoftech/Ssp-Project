@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFFFFF"
-                android:hint="Enter UserName/Mobile No"
+                android:hint="Enter User Name/ Mobile No"
                 android:singleLine="true"
                 android:textColor="#FFFFFF"
                 android:textColorHint="#FFFFFF" />
