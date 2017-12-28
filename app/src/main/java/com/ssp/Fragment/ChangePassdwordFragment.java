@@ -53,7 +53,6 @@ public class ChangePassdwordFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_change_passdword, container, false);
         preferences = getActivity().getSharedPreferences(PREFS_NAME, 0);
         userId = preferences.getInt("userId", 0);
-        Toast.makeText(getContext(), "" + userId, Toast.LENGTH_SHORT).show();
         edtPassword = (EditText) view.findViewById(R.id.edt_password);
         edtNewPassword = (EditText) view.findViewById(R.id.edt_newPassword);
         edtReEnterPassword = (EditText) view.findViewById(R.id.edt_reEnterPassword);

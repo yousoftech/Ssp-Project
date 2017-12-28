@@ -47,6 +47,8 @@ public class YatriFragment extends Fragment {
     ArrayList<beanYatra> event;
     ConnectionDetector detector;
     TextView txtCongo;
+    TextView txtRecords;
+
     adapterYatra aYatra;
     SharedPreferences preferences;
     int userId;
@@ -66,6 +68,8 @@ public class YatriFragment extends Fragment {
         recyclerView = (RecyclerView) view.findViewById(R.id.recylerViewYatri);
         userId = preferences.getInt("userId", 0);
         txtCongo = (TextView) view.findViewById(R.id.txtCongratulation);
+        txtRecords = (TextView) view.findViewById(R.id.txtNoRecords);
+
         event = new ArrayList<beanYatra>();
         detailYatra();
         return view;
@@ -101,10 +105,19 @@ public class YatriFragment extends Fragment {
                                 yatra.setSpotNo(spotNo);
                                 yatra.setYatraTime(dateTime);
                                 event.add(yatra);
-                                aYatra = new adapterYatra(getContext(), event);
-                                recyclerView.setAdapter(aYatra);
-                                recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-                                progressDialog.dismiss();
+
+
+                                    int totalElements = event.size();
+                                if(totalElements > 0)
+                                {
+                                    txtRecords.setVisibility(View.INVISIBLE);
+                                    recyclerView.setVisibility(View.VISIBLE);
+                                    aYatra = new adapterYatra(getContext(), event);
+                                    recyclerView.setAdapter(aYatra);
+                                    recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+
+                                }
+                                 progressDialog.dismiss();
                             }
                         }
 

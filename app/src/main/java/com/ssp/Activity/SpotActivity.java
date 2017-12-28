@@ -41,6 +41,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import  java.text.SimpleDateFormat;
 
 import static com.ssp.Activity.LoginActivity.PREFS_NAME;
 
@@ -67,6 +70,9 @@ public class SpotActivity extends AppCompatActivity {
     ArrayList<String> spotArr;
     boolean doubleBackToExitPressedOnce = false;
 
+    SimpleDateFormat timeStampFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    Date myDate = new Date();
+    String filename = timeStampFormat.format(myDate);
 
     String[] spot = {"1", "5", "10",};
     String sp = "In";
@@ -278,6 +284,8 @@ public class SpotActivity extends AppCompatActivity {
                 Log.d("spot", "Spot" + SpotId);
                 object.put("iYatraNo", yatraNumber);
                 object.put("strUpOrDown", sp);
+                object.put("currentdatetime",filename);
+                Log.d("timeasd",filename + " ");
 
             } catch (JSONException e) {
                 Toast.makeText(SpotActivity.this, "Something take longer time please try again..!", Toast.LENGTH_LONG).show();
